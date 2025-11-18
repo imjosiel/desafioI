@@ -41,6 +41,21 @@ GET http://localhost:8080/actuator/health
 mvn -B test
 ```
 
+## Seed de teste
+- PowerShell (Windows):
+```
+pwsh -ExecutionPolicy Bypass -File ".\curls para teste\seed.ps1"
+```
+- REST Client (VS Code): abra e execute as requisições em:
+```
+curls para teste/seed.http
+```
+- Linux/macOS (curl + jq opcional):
+```
+chmod +x "curls para teste/seed.sh"
+"curls para teste/seed.sh"
+```
+
 ## Endpoints principais
 - Catálogo (`/api/catalogo`)
   - POST: cria item
