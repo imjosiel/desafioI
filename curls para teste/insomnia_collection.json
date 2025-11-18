@@ -1,0 +1,151 @@
+{
+  "__export_format": 4,
+  "__export_date": "2025-11-18T00:00:00.000Z",
+  "__export_source": "desafioI",
+  "resources": [
+    {
+      "_id": "wrk_desafioI",
+      "type": "workspace",
+      "name": "desafioI",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_desafioI",
+      "type": "environment",
+      "parentId": "wrk_desafioI",
+      "name": "Base Environment",
+      "data": {"baseUrl": "http://localhost:8080", "produtoId": "", "servicoId": "", "pedidoId": "", "itemId": ""}
+    },
+    {
+      "_id": "fld_catalogo",
+      "type": "request_group",
+      "parentId": "wrk_desafioI",
+      "name": "Catalogo"
+    },
+    {
+      "_id": "req_list_catalogo",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Listar catálogo",
+      "method": "GET",
+      "url": "{{ baseUrl }}/api/catalogo"
+    },
+    {
+      "_id": "req_criar_produto",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Criar produto",
+      "method": "POST",
+      "url": "{{ baseUrl }}/api/catalogo",
+      "body": {"mimeType": "application/json", "text": "{\"nome\":\"Notebook\",\"preco\":3500.00,\"tipo\":\"PRODUTO\"}"}
+    },
+    {
+      "_id": "req_criar_servico",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Criar serviço",
+      "method": "POST",
+      "url": "{{ baseUrl }}/api/catalogo",
+      "body": {"mimeType": "application/json", "text": "{\"nome\":\"Instalacao\",\"preco\":150.00,\"tipo\":\"SERVICO\"}"}
+    },
+    {
+      "_id": "req_get_catalogo",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Obter item",
+      "method": "GET",
+      "url": "{{ baseUrl }}/api/catalogo/{{ produtoId }}"
+    },
+    {
+      "_id": "req_put_catalogo",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Atualizar item",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/api/catalogo/{{ produtoId }}",
+      "body": {"mimeType": "application/json", "text": "{\"nome\":\"Notebook X\",\"preco\":3600.00,\"tipo\":\"PRODUTO\"}"}
+    },
+    {
+      "_id": "req_del_catalogo",
+      "type": "request",
+      "parentId": "fld_catalogo",
+      "name": "Remover item",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/api/catalogo/{{ produtoId }}"
+    },
+    {
+      "_id": "fld_pedidos",
+      "type": "request_group",
+      "parentId": "wrk_desafioI",
+      "name": "Pedidos"
+    },
+    {
+      "_id": "req_list_pedidos",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Listar pedidos",
+      "method": "GET",
+      "url": "{{ baseUrl }}/api/pedidos"
+    },
+    {
+      "_id": "req_criar_pedido",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Criar pedido",
+      "method": "POST",
+      "url": "{{ baseUrl }}/api/pedidos",
+      "body": {"mimeType": "application/json", "text": "{\"descontoPercentual\":10,\"itens\":[{\"produtoServicoId\":\"{{ produtoId }}\",\"quantidade\":2},{\"produtoServicoId\":\"{{ servicoId }}\",\"quantidade\":1}]}"}
+    },
+    {
+      "_id": "req_get_pedido",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Obter pedido",
+      "method": "GET",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}"
+    },
+    {
+      "_id": "req_put_pedido",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Atualizar pedido",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}",
+      "body": {"mimeType": "application/json", "text": "{\"descontoPercentual\":5,\"itens\":[{\"produtoServicoId\":\"{{ produtoId }}\",\"quantidade\":1}]}"}
+    },
+    {
+      "_id": "req_del_pedido",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Remover pedido",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}"
+    },
+    {
+      "_id": "req_add_item",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Adicionar item",
+      "method": "POST",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}/itens",
+      "body": {"mimeType": "application/json", "text": "{\"produtoServicoId\":\"{{ produtoId }}\",\"quantidade\":2}"}
+    },
+    {
+      "_id": "req_put_item",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Atualizar item",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}/itens/{{ itemId }}",
+      "body": {"mimeType": "application/json", "text": "{\"produtoServicoId\":\"{{ produtoId }}\",\"quantidade\":3}"}
+    },
+    {
+      "_id": "req_del_item",
+      "type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Remover item",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/api/pedidos/{{ pedidoId }}/itens/{{ itemId }}"
+    }
+  ]
+}

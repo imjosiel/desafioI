@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "desafioI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Catalogo",
+      "item": [
+        {
+          "name": "Listar catálogo",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/catalogo"
+          }
+        },
+        {
+          "name": "Criar produto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"nome\":\"Notebook\",\"preco\":3500.00,\"tipo\":\"PRODUTO\"}"},
+            "url": "{{baseUrl}}/api/catalogo"
+          }
+        },
+        {
+          "name": "Criar serviço",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"nome\":\"Instalacao\",\"preco\":150.00,\"tipo\":\"SERVICO\"}"},
+            "url": "{{baseUrl}}/api/catalogo"
+          }
+        },
+        {
+          "name": "Obter item do catálogo",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/catalogo/{{produtoId}}"
+          }
+        },
+        {
+          "name": "Atualizar item do catálogo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"nome\":\"Notebook X\",\"preco\":3600.00,\"tipo\":\"PRODUTO\"}"},
+            "url": "{{baseUrl}}/api/catalogo/{{produtoId}}"
+          }
+        },
+        {
+          "name": "Remover item do catálogo",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/catalogo/{{produtoId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Listar pedidos",
+          "request": {"method": "GET", "url": "{{baseUrl}}/api/pedidos"}
+        },
+        {
+          "name": "Criar pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"descontoPercentual\":10,\"itens\":[{\"produtoServicoId\":\"{{produtoId}}\",\"quantidade\":2},{\"produtoServicoId\":\"{{servicoId}}\",\"quantidade\":1}]}"},
+            "url": "{{baseUrl}}/api/pedidos"
+          }
+        },
+        {
+          "name": "Obter pedido",
+          "request": {"method": "GET", "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}"}
+        },
+        {
+          "name": "Atualizar pedido",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"descontoPercentual\":5,\"itens\":[{\"produtoServicoId\":\"{{produtoId}}\",\"quantidade\":1}]}"},
+            "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}"
+          }
+        },
+        {
+          "name": "Remover pedido",
+          "request": {"method": "DELETE", "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}"}
+        },
+        {
+          "name": "Adicionar item",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"produtoServicoId\":\"{{produtoId}}\",\"quantidade\":2}"},
+            "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}/itens"
+          }
+        },
+        {
+          "name": "Atualizar item",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {"mode": "raw", "raw": "{\"produtoServicoId\":\"{{produtoId}}\",\"quantidade\":3}"},
+            "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}/itens/{{itemId}}"
+          }
+        },
+        {
+          "name": "Remover item",
+          "request": {"method": "DELETE", "url": "{{baseUrl}}/api/pedidos/{{pedidoId}}/itens/{{itemId}}"}
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8080"},
+    {"key": "produtoId", "value": ""},
+    {"key": "servicoId", "value": ""},
+    {"key": "pedidoId", "value": ""},
+    {"key": "itemId", "value": ""}
+  ]
+}
