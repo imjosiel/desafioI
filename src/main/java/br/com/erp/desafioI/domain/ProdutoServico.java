@@ -36,6 +36,9 @@ public class ProdutoServico {
     @Column(name = "tipo", nullable = false)
     private TipoItem tipo;
 
+    @Column(name = "ativo", nullable = false)
+    private Boolean ativo = Boolean.TRUE;
+
     public ProdutoServico() {
     }
 
@@ -46,6 +49,14 @@ public class ProdutoServico {
         this.tipo = tipo;
     }
 
+    public ProdutoServico(UUID id, String nome, BigDecimal preco, TipoItem tipo, Boolean ativo) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.tipo = tipo;
+        this.ativo = ativo;
+    }
+
     /**
      * Geração automática de UUID ao persistir quando não informado.
      */
@@ -53,6 +64,9 @@ public class ProdutoServico {
     public void prePersist() {
         if (id == null) {
             id = UUID.randomUUID();
+        }
+        if (ativo == null) {
+            ativo = Boolean.TRUE;
         }
     }
 
@@ -86,5 +100,13 @@ public class ProdutoServico {
 
     public void setTipo(TipoItem tipo) {
         this.tipo = tipo;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }

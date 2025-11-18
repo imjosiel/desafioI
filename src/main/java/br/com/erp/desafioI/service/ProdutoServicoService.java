@@ -23,6 +23,7 @@ public class ProdutoServicoService {
     /** Cria um item de catálogo a partir do DTO */
     public ProdutoServico create(ProdutoServicoDTO dto) {
         ProdutoServico entity = new ProdutoServico(null, dto.getNome(), dto.getPreco(), dto.getTipo());
+        entity.setAtivo(Boolean.TRUE);
         return repository.save(entity);
     }
 
